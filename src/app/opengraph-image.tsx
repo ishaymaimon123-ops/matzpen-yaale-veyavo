@@ -1,0 +1,5 @@
+import { ImageResponse } from 'next/og';
+import { readFile } from 'node:fs/promises';
+import { join } from 'node:path';
+export const size={width:1200,height:630};export const contentType='image/png';
+export default async function Image(){const font=await readFile(join(process.cwd(),'public/fonts/noto-serif-hebrew-700.woff'));return new ImageResponse(<div style={{width:'100%',height:'100%',background:'#f7f6f1',display:'flex',alignItems:'center',justifyContent:'center',flexDirection:'column',color:'#263f54',fontFamily:'Noto Serif Hebrew'}}><div style={{width:90,height:90,border:'3px solid #b18c55',borderRadius:'50%',display:'flex',alignItems:'center',justifyContent:'center',marginBottom:30}}><div style={{width:18,height:18,background:'#b18c55',transform:'rotate(45deg)'}}/></div><div style={{fontSize:82,fontWeight:700}}>מצפן יעלה ויבוא</div><div style={{fontSize:38,marginTop:15}}>שכחת יעלה ויבוא גלה מיד מה לעשות</div></div>,{...size,fonts:[{name:'Noto Serif Hebrew',data:font,style:'normal',weight:700}]})}
